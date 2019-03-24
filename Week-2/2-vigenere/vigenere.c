@@ -1,35 +1,32 @@
 #include <cs50.h>
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
+#include <string.h>
+
+int shift(char c);
 
 int main(int argc, string argv[])
 {
     if (argc != 2)
     {
-        printf("Usage: ./caesar key\n");
+        printf("Usage: ./vigenere keyword\n");
         return 1;
     }
     // Validate key
-    int i = 0;
     string s = argv[1];
+    int i = 0;
     char c = s[i];  
     while (c != '\0')
     {
-        if (!isdigit(c))
+        if (!isalpha(c))
         {
-            printf("Usage: ./caesar key\n");
+            printf("Usage: ./vigenere keyword\n");
             return 1;
         }
         c = s[++i];
     }
-    // Convert key to int
-    int key = atoi(s) % 26;
-    // Check full shift case
-    if (key > 26)
-    {
-        key = key % 26;
-    }
+    int keylen = strlen(s);
+    int k = 0;
     // Ask user for a plain text
     string plain = get_string("plaintext: ");
     // Encrypt plain text using user key
@@ -38,20 +35,45 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
     while (c != '\0')
     {
+        // Loop key
+        if (k >= keylen)
+        {
+            k = 0;
+        }
+        int key = shift(s[k]);
+        // Cypher
         char ck = c;
         if (c >= 'a' && c <= 'z')
         {
             // Check lower case
             ck = (c + key) > 'z' ? 'a' + (c + key - 1) - 'z' : (c + key);
+            k++;
         } 
         else if (c >= 'A' && c <= 'Z')
         {
             // Check upper case
             ck = (c + key) > 'Z' ? 'A' + (c + key - 1) - 'Z' : (c + key);
+            k++;
         } 
         printf("%c", ck);
         // Pick next char
         c = plain[++i];
     }
     printf("\n");
+}
+
+// Convert character into the correct shift value
+int shift(char c)
+{
+    if (c >= 'a' && c <= 'z')
+    {
+        // Check lower case
+        return c - 'a';
+    } 
+    else if (c >= 'A' && c <= 'Z')
+    {
+        // Check upper case
+        return c - 'A';
+    }
+    return c;
 }
