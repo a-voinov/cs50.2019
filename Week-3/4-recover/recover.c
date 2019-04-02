@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <sys/stat.h>
-#include <unistd.h>
 
 // declare BYTE
 typedef uint8_t  BYTE;
@@ -31,9 +29,6 @@ int main(int argc, char *argv[])
     fseek(file, 0L, SEEK_END);
     int file_size = ftell(file);
     fseek(file, 0L, SEEK_SET);
-
-    // array of first three JPEG bytes
-    BYTE jpeg_start[] = {0xff, 0xd8};
 
     // array of one of the possible 4th JPEG byte
     BYTE byte4[] = {0xe0, 0xe1, 0xe2, 0xe3, 0xe4, 0xe5, 0xe6, 0xe7, 0xe8, 0xe9, 0xea, 0xeb, 0xec, 0xed, 0xee, 0xef};
