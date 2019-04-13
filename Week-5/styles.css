@@ -1,0 +1,54 @@
+#ava{
+    width: 4rem;
+    height: 4rem;
+}
+
+.template-1 {
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    color:black;
+}
+
+.template-2 {
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    color:#16a2b8;
+}
+
+.template-3 {
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    color: green;
+}
+
+.template-4 {
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    color: gray;
+}
+
+.template-5 {
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    text-align: left;
+}
