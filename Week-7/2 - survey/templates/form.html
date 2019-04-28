@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus="" class="form-control" id="name" name="name" placeholder="Name" type="text">
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="house" name="house">
+                <option disabled="" selected="" value="">House</option>
+                <option value="Stark">Stark</option>
+                <option value="Lannister">Lannister</option>
+                <option value="Baratheon">Baratheon</option>
+                <option value="Targaryen">Targaryen</option>
+                <option value="Martell">Martell</option>
+                <option value="Tyrell">Tyrell</option>
+                <option value="Frey">Frey</option>
+                <option value="Greyjoy">Greyjoy</option>
+            </select>
+        </div>
+        <div class="form-group">
+
+                <div class="form-check">
+                    <input class="form-check-input" id="Head" name="position" type="radio" value="Head">
+                    <label class="form-check-label" for="Head">
+                        Head of the House
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" id="Member" name="position" type="radio" value="Member">
+                    <label class="form-check-label" for="Member">
+                        Member of the House
+                    </label>
+                </div>
+
+        </div>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button id="submit-form-btn" class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+        $("#submit-form-btn").on('click', function(e){
+           if (!$('#name').val()){
+               alert("Enter name");
+               e.preventDefault();
+           }
+           if (!$('#house').val()){
+               alert("Chose house");
+               e.preventDefault();
+           }
+           if ($('input[name="position"]:checked').length === 0){
+               alert("Chose position");
+               e.preventDefault();
+           }
+        });
+
+    </script>
+
+{% endblock %}

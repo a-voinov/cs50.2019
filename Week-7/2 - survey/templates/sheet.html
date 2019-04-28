@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div class="tablediv">
+        <table id="table" class="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>House</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in data %}
+                <tr>
+                    <td>{{ d[0] }}</td>
+                    <td>{{ d[1] }}</td>
+                    <td>{{ d[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready( function () {
+            $('#table').DataTable( {
+                paging: false,
+                scrollY: 300
+            });
+        });
+    </script>
+
+{% endblock %}
