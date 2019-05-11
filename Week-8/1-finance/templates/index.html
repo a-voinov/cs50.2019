@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<div class="tablediv">
+        <table id="table" class="display">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in data %}
+                <tr>
+                    <td>{{ d[0] }}</td>
+                    <td>{{ d[1] }}</td>
+                    <td>{{ d[2] }}</td>
+                    <td>{{ d[3] }}</td>
+                    <td>{{ d[4] }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>CASH</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ cash }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4" style="text-align:right">Total:</th>
+                    <th>{{ total }}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready( function () {
+            $('#table').DataTable( {
+                paging: false,
+                ordering: false,
+                scrollY: 400
+            });
+        });
+    </script>
+{% endblock %}

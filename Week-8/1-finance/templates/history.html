@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<div class="tablediv">
+        <table id="table" class="display">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Transacted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in data %}
+                <tr>
+                    <td>{{ d[0] }}</td>
+                    <td>{{ d[1] }}</td>
+                    <td>{{ d[2] }}</td>
+                    <td>{{ d[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready( function () {
+            $('#table').DataTable( {
+                paging: false,
+                ordering: false,
+                scrollY: 400
+            });
+        });
+    </script>
+{% endblock %}
